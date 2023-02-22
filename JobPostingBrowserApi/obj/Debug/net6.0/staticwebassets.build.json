@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "wz6N3Oqviog3jHnfojLdsrxHrt8FpJtShStwzO74vMM=",
+  "Source": "JobPostingBrowserApi",
+  "BasePath": "_content/JobPostingBrowserApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
