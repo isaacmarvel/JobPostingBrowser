@@ -229,11 +229,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowserApi\\JobPostingBrowserApi\\JobPostingBrowserApi.csproj",
+      "projectUniqueName": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\JobPostingBrowserApi.csproj",
       "projectName": "JobPostingBrowserApi",
-      "projectPath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowserApi\\JobPostingBrowserApi\\JobPostingBrowserApi.csproj",
+      "projectPath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\JobPostingBrowserApi.csproj",
       "packagesPath": "C:\\Users\\rawkh\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowserApi\\JobPostingBrowserApi\\obj\\",
+      "outputPath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rawkh\\AppData\\Roaming\\NuGet\\NuGet.Config",
