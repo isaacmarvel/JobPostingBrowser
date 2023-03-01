@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPostingBrowserApi", "JobPostingBrowserApi\JobPostingBrowserApi.csproj", "{84DA5BD1-25E8-4CF6-8775-696C0A1C8A37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPostingBrowser.Api", "JobPostingBrowserApi\JobPostingBrowser.Api.csproj", "{84DA5BD1-25E8-4CF6-8775-696C0A1C8A37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPostingBrowser.Core", "JobPostingBrowser.Core\JobPostingBrowser.Core.csproj", "{1C53E797-E4F0-451F-8284-82D2A6793966}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPostingBrowser.Core", "JobPostingBrowser.Core\JobPostingBrowser.Core.csproj", "{1C53E797-E4F0-451F-8284-82D2A6793966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

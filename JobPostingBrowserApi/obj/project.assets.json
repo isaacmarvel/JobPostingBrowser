@@ -229,9 +229,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\JobPostingBrowserApi.csproj",
-      "projectName": "JobPostingBrowserApi",
-      "projectPath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\JobPostingBrowserApi.csproj",
+      "projectUniqueName": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\JobPostingBrowser.Api.csproj",
+      "projectName": "JobPostingBrowser.Api",
+      "projectPath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\JobPostingBrowser.Api.csproj",
       "packagesPath": "C:\\Users\\rawkh\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowserApi\\obj\\",
       "projectStyle": "PackageReference",

@@ -53,7 +53,7 @@ namespace JobPostingBrowser.Core
             public string JobUrl { get; set; }
         }
 
-        public class Root
+        public class JobApiResults
         {
             [JsonProperty("results")]
             public List<Result> Results { get; set; }
