@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Bjah9FKXMkR6N9aDFDYasiqzTaU19LMSq/ckof3U1JpSFxTobKo1JDMt17aXd73PBh3N3d4MOU3sc2l6DtQ7XA==",
+  "dgSpecHash": "UCyJNSI9daSW2j0Fz1wwnpqvMcpsYOR4XzzM4eTpgkNEX7wXInQBlt8aeE5YHRcxWdzcO1NqQVr3mjB4O8+2gA==",
   "success": true,
   "projectFilePath": "C:\\Users\\rawkh\\source\\repos\\JobPostingBrowser\\JobPostingBrowser.Core\\JobPostingBrowser.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\rawkh\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
