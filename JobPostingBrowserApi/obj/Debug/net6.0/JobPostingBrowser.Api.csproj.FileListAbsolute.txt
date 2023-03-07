@@ -30,3 +30,7 @@ C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\obj\Debug\net
 C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\obj\Debug\net6.0\JobPostingBrowser.Api.pdb
 C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\obj\Debug\net6.0\JobPostingBrowser.Api.genruntimeconfig.cache
 C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\obj\Debug\net6.0\ref\JobPostingBrowser.Api.dll
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\bin\Debug\net6.0\RestEase.dll
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\bin\Debug\net6.0\JobPostingBrowser.Core.dll
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowserApi\bin\Debug\net6.0\JobPostingBrowser.Core.pdb

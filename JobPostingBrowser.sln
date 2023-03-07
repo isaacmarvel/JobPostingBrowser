@@ -4,8 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPostingBrowser.Api", "JobPostingBrowserApi\JobPostingBrowser.Api.csproj", "{84DA5BD1-25E8-4CF6-8775-696C0A1C8A37}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1C53E797-E4F0-451F-8284-82D2A6793966} = {1C53E797-E4F0-451F-8284-82D2A6793966}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPostingBrowser.Core", "JobPostingBrowser.Core\JobPostingBrowser.Core.csproj", "{1C53E797-E4F0-451F-8284-82D2A6793966}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPostingBrowser.Console", "JobPostingBrowser.Console\JobPostingBrowser.Console.csproj", "{201B0306-390B-4938-B656-DCEBA5D3978C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1C53E797-E4F0-451F-8284-82D2A6793966} = {1C53E797-E4F0-451F-8284-82D2A6793966}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,10 @@ Global
 		{1C53E797-E4F0-451F-8284-82D2A6793966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C53E797-E4F0-451F-8284-82D2A6793966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C53E797-E4F0-451F-8284-82D2A6793966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201B0306-390B-4938-B656-DCEBA5D3978C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201B0306-390B-4938-B656-DCEBA5D3978C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201B0306-390B-4938-B656-DCEBA5D3978C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201B0306-390B-4938-B656-DCEBA5D3978C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

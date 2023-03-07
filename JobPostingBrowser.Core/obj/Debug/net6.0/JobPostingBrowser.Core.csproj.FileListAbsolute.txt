@@ -1,0 +1,12 @@
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\bin\Debug\net6.0\JobPostingBrowser.Core.deps.json
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\bin\Debug\net6.0\JobPostingBrowser.Core.dll
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\bin\Debug\net6.0\JobPostingBrowser.Core.pdb
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\JobPostingBrowser.Core.csproj.AssemblyReference.cache
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\JobPostingBrowser.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\JobPostingBrowser.Core.AssemblyInfoInputs.cache
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\JobPostingBrowser.Core.AssemblyInfo.cs
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\JobPostingBrowser.Core.csproj.CoreCompileInputs.cache
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\JobPostingBrowser.Core.dll
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\refint\JobPostingBrowser.Core.dll
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\JobPostingBrowser.Core.pdb
+C:\Users\rawkh\source\repos\JobPostingBrowser\JobPostingBrowser.Core\obj\Debug\net6.0\ref\JobPostingBrowser.Core.dll
