@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using RestEase;
 using System.Net;
 using static JobPostingBrowser.Core.Jobs;
+using System.Net.Http.Headers;
 
 namespace JobPostingBrowser.Api.Clients
 {
@@ -20,13 +21,16 @@ namespace JobPostingBrowser.Api.Clients
             // The [Get] attribute marks this method as a GET request
             // The "users" is a relative path the a base URL, which we'll provide later
             // "{userId}" is a placeholder in the URL: the value from the "userId" method parameter is used
+            [Header("Authorization")]
+            AuthenticationHeaderValue Authorization { get; set; }
+
             [Get("api/1.0/search")]
-            Task<JobResponse> GetJobAsync();
-            //we'll define base url later in video
-            //still need to authenticate
+            Task<JobApiResults> GetJobAsync();
 
             //[Get("users/{userId}")]
             //Task<User> GetUserAsync([Path] string userId);
         }
+
+
     }
 }
