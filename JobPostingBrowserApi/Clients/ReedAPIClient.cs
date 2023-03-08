@@ -24,13 +24,10 @@ namespace JobPostingBrowser.Api.Clients
             [Header("Authorization")]
             AuthenticationHeaderValue Authorization { get; set; }
 
-            [Get("api/1.0/search")]
-            Task<JobApiResults> GetJobAsync();
-
-            //[Get("users/{userId}")]
-            //Task<User> GetUserAsync([Path] string userId);
+           
+            //want people to be able to search by keyword, location, and maybe resultsToTake and resultsToSkip
+            [Get("api/1.0/search?keywords={keyword}&location={location}&employerID")]
+            Task<JobApiResults> GetJobsAsync([Path] string keyword, [Path] string location);
         }
-
-
     }
 }

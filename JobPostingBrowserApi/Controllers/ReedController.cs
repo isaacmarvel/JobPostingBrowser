@@ -15,8 +15,21 @@ namespace JobPostingBrowser.Api.Controllers
     public class ReedController : ControllerBase
     {
         //GET: api/1.0/search
+        //[HttpGet]
+        //public async Task<ActionResult<JobApiResults>> GetJobs()
+        //{
+        //    IReedAPI api = RestClient.For<IReedAPI>("https://www.reed.co.uk/");
+
+        //    var value = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{ApiKey}:"));
+
+        //    api.Authorization = new AuthenticationHeaderValue("Basic", value);
+
+        //    var job = await api.GetJobAsync();
+
+        //    return job;
+        //}
         [HttpGet]
-        public async Task<ActionResult<JobApiResults>> GetJobs()
+        public async Task<ActionResult<JobApiResults>> GetJobsWithKeyword()
         {
             IReedAPI api = RestClient.For<IReedAPI>("https://www.reed.co.uk/");
 
@@ -24,11 +37,13 @@ namespace JobPostingBrowser.Api.Controllers
 
             api.Authorization = new AuthenticationHeaderValue("Basic", value);
 
-            var job = await api.GetJobAsync();
+            var job = await api.GetJobsAsync("accountant", "london");
 
             return job;
+
+
         }
-        
+
 
     }
 }
