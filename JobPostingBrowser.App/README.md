@@ -1,4 +1,4 @@
-# Quasar App (jobpostingbrowser-app)
+# JobPostingBrowserApp (jobpostingbrowser)
 
 A Quasar Project
 

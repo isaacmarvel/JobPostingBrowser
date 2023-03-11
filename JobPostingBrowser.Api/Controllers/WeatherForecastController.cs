@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace JobPostingBrowserApi.Controllers
+namespace JobPostingBrowser.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

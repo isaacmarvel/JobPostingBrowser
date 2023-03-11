@@ -1,4 +1,4 @@
-namespace JobPostingBrowserApi
+namespace JobPostingBrowser.Api
 {
     public class WeatherForecast
     {

@@ -1,8 +1,8 @@
 {
-  "name": "jobpostingbrowser-app",
+  "name": "jobpostingbrowser",
   "version": "0.0.1",
   "description": "A Quasar Project",
-  "productName": "Quasar App",
+  "productName": "JobPostingBrowserApp",
   "author": "isaacmarvel <isaac.marvel.77@gmail.com>",
   "private": true,
   "scripts": {
@@ -11,6 +11,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "axios": "^1.2.1",
+    "pinia": "^2.0.11",
     "@quasar/extras": "^1.0.0",
     "quasar": "^2.6.0",
     "vue": "^3.0.0",
