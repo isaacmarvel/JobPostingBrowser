@@ -7,6 +7,7 @@ using RestEase;
 using System.Net;
 using static JobPostingBrowser.Core.Jobs;
 using System.Net.Http.Headers;
+using JobPostingBrowser.Api.Models;
 
 namespace JobPostingBrowser.Api.Clients
 {
@@ -24,10 +25,16 @@ namespace JobPostingBrowser.Api.Clients
             [Header("Authorization")]
             AuthenticationHeaderValue Authorization { get; set; }
 
-           
+
             //want people to be able to search by keyword, location, and maybe resultsToTake and resultsToSkip
-            [Get("api/1.0/search?keywords={keyword}&location={location}&employerID")]
-            Task<JobApiResults> GetJobsAsync([Path] string keyword, [Path] string location);
+            //[Get("api/1.0/search?keywords={keyword}&location={location}&employerID")]
+            //Task<JobApiResults> GetJobsAsync([Path] string keyword, [Path] string location);
+
+            [Get("api/1.0/search")]
+            Task<JobApiResults> GetJobsAsync(string keywords);
+
+           
+
         }
     }
 }
