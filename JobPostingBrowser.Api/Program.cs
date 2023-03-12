@@ -7,16 +7,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//var policyName = "CorsPolicy";
+var policyName = "CorsPolicy";
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddDefaultPolicy(
-//        policy =>
-//        {
-//            policy.WithOrigins("https://localhost:9000");
-//        });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:9000");
+        });
+});
 
 var app = builder.Build();
 
@@ -29,7 +29,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//app.UseCors();
+app.UseCors();
 
 app.UseAuthorization();
 
