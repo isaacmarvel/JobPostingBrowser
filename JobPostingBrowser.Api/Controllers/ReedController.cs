@@ -32,24 +32,10 @@ namespace JobPostingBrowser.Api.Controllers
 
             api.Authorization = new AuthenticationHeaderValue("Basic", value);
 
-            var job = await api.GetJobsAsync(parameters.Keywords);
+            var job = await api.GetJobsAsync(parameters.Keywords, parameters.locationName);
 
             return job;
         }
-        //[HttpGet]
-        //public async Task<ActionResult<JobApiResults>> GetJobsWithKeyword()
-        //{
-        //    IReedAPI api = RestClient.For<IReedAPI>("https://www.reed.co.uk/");
-
-        //    var value = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{ApiKey}:"));
-
-        //    api.Authorization = new AuthenticationHeaderValue("Basic", value);
-
-        //    var job = await api.GetJobsAsync("accountant", "london");
-
-        //    return job;
-
-        //}
 
 
     }

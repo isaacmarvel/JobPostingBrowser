@@ -6,26 +6,28 @@ async function loadData() {
   return await api.get("/api/Reed", {
     params: {
       keywords: "accountant",
+      locationName: "london",
     },
   });
 }
 
-//load data with a parameter?
-//or do you filter after you make the request?
-let reed = [];
+// let reed = [];
 
 onMounted(async () => {
   const result = await loadData();
-  console.log(result);
-
-  reed = result.data;
+  // reed = result.data;
+  for (let r in result.data.results) {
+    console.log(r);
+  }
 });
 </script>
 
 <template>
   <div>
     <!-- <ul>
-        <li v-for="w in weather" :key="w"> {{ w.temperatureF }}, {{ w.summary }}</li>
+      <li v-for="r in result" :key="r">
+        {{ r.data }}
+      </li>
     </ul> -->
   </div>
 </template>

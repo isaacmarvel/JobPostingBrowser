@@ -31,7 +31,7 @@ namespace JobPostingBrowser.Api.Clients
             //Task<JobApiResults> GetJobsAsync([Path] string keyword, [Path] string location);
 
             [Get("api/1.0/search")]
-            Task<JobApiResults> GetJobsAsync(string keywords);
+            Task<JobApiResults> GetJobsAsync(string keywords, string locationName);
 
            
 
