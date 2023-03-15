@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from "vue";
 import { api } from "boot/axios";
 import { onMounted } from "vue";
 
@@ -11,25 +12,26 @@ async function loadData() {
   });
 }
 
-let reed = [];
+let reed = ref(null);
 
 onMounted(async () => {
   const result = await loadData();
-  reed = result.data.results;
+  reed.value = result.data.results;
   console.log(reed);
   return reed;
 });
 </script>
 
 <template>
+  <div>
+    <div v-if="reed == []">Loading</div>
 
-  <p v-if="reed === []">Loading</p>
-
-  <p v-else>
-    <ul>
-      <li v-for="r in reed" :key="r">
-        {{ r }}
-      </li>
-    </ul>
-  </p>
+    <div v-else>
+      <ul>
+        <li v-for="r in reed" :key="r">
+          {{ r }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
