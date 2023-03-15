@@ -22,15 +22,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
-    <div v-if="reed == []">Loading</div>
 
-    <div v-else>
-      <ul>
-        <li v-for="r in reed" :key="r">
-          {{ r }}
-        </li>
-      </ul>
-    </div>
-  </div>
+  <p v-if="reed === []">Loading</p>
+
+  <p v-else>
+    <ul>
+      <li v-for="r in reed" :key="r">
+        {{ r }}
+      </li>
+    </ul>
+  </p>
 </template>
