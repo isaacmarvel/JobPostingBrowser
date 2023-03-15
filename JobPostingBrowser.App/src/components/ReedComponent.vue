@@ -11,23 +11,26 @@ async function loadData() {
   });
 }
 
-// let reed = [];
+let reed = [];
 
 onMounted(async () => {
   const result = await loadData();
-  // reed = result.data;
-  for (let r in result.data.results) {
-    console.log(r);
-  }
+  reed = result.data.results;
+  console.log(reed);
+  return reed;
 });
 </script>
 
 <template>
   <div>
-    <!-- <ul>
-      <li v-for="r in result" :key="r">
-        {{ r.data }}
-      </li>
-    </ul> -->
+    <div v-if="reed == []">Loading</div>
+
+    <div v-else>
+      <ul>
+        <li v-for="r in reed" :key="r">
+          {{ r }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
