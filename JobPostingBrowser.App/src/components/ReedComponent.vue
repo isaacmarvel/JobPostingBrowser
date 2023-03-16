@@ -8,6 +8,8 @@ async function loadData() {
     params: {
       keywords: "accountant",
       locationName: "london",
+      resultsToTake: 20,
+      resultsToSkip: 0,
     },
   });
 }

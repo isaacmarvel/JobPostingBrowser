@@ -1,23 +1,13 @@
-﻿using Newtonsoft.Json;
-using RestEase;
-using System;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using RestEase;
-using System.Net;
+﻿using RestEase;
 using static JobPostingBrowser.Core.Jobs;
 using System.Net.Http.Headers;
-using JobPostingBrowser.Api.Models;
 
 namespace JobPostingBrowser.Api.Clients
 {
-    public class ReedAPIClient
+    public class ReedJobInfoAPIClient
     {
-
-        // Define an interface representing the API
-        // GitHub requires a User-Agent header, so specify one
         [Header("User-Agent", "RestEase")]
-        public interface IReedAPI
+        public interface IReedJobInfoAPI
         {
             // The [Get] attribute marks this method as a GET request
             // The "users" is a relative path the a base URL, which we'll provide later
@@ -25,10 +15,8 @@ namespace JobPostingBrowser.Api.Clients
             [Header("Authorization")]
             AuthenticationHeaderValue Authorization { get; set; }
 
-            [Get("api/1.0/search")]
-            Task<JobApiResults> GetJobsAsync(string keywords, string locationName, int resultsToTake, int resultsToSkip);
+            [Get("api/1.0/jobs/{JobId}")]
+            Task<JobResponse> GetJobInfoAsync([Path("JobId")] int jobId);
         }
-
-        
     }
 }
