@@ -16,12 +16,22 @@ let reed = ref(null);
 
 onMounted(async () => {
   const result = await loadData();
-  reed.value = result.data.results;
+  console.log(result);
+  reed.value = result.data;
   console.log(reed);
   return reed;
 });
 </script>
 
+<!-- Need to display json so people can save the job Loop through list of x amount of
+jobs, and display job.data or whatever then have a button that saves them if
+you're interested i guess--it sends to backend. -->
+
+<!-- will need at some point to request another api call for the individual job -->
+
+<!-- make backend give single array of objects. -->
+
+<!-- for display--need to loop through and do another api call to get job specific data, like in pokemon -->
 <template>
   <div>
     <div v-if="reed == []">Loading</div>
