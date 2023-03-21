@@ -41,7 +41,16 @@ you're interested i guess--it sends to backend. -->
     <div v-else>
       <ul>
         <li v-for="r in reed" :key="r">
-          {{ r }}
+          <ul>
+            <li>{{ r.employerName }}</li>
+            <li>{{ r.date }}</li>
+            <li>{{ r.jobDescription }}</li>
+            <!-- May have to request individual job for full description -->
+            <li>{{ r.jobTitle }}</li>
+            <li>{{ r.jobUrl }}</li>
+            <li>{{ r.locationName }}</li>
+            <br />
+          </ul>
         </li>
       </ul>
     </div>
