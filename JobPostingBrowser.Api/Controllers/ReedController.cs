@@ -26,7 +26,7 @@ namespace JobPostingBrowser.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<JobResponse>>> GetJobs([FromQuery] JobParameters parameters) //would use FromBody attribute for posts
         {
-            IReedAPI api = RestClient.For<IReedAPI>("https://www.reed.co.uk/");
+            IReedAPI api = RestClient.For<IReedAPI>("https://www.reed.co.uk/api/1.0/");
 
             var value = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{options.Value.ReedApiKey}:"));
 

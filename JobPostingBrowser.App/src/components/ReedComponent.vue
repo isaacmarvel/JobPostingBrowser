@@ -1,9 +1,16 @@
 <script setup>
 import { ref } from "vue";
 import { api } from "boot/axios";
-import { onMounted } from "vue";
+import { useQuasar } from "quasar";
 
-async function loadData() {
+let viewJob = ref(false);
+let initialJobs = ref(null);
+const $q = useQuasar();
+
+const keyword = ref(null);
+const location = ref(null);
+
+async function loadInitialJobData() {
   return await api.get("/api/Reed", {
     params: {
       keywords: "accountant",
@@ -14,45 +21,112 @@ async function loadData() {
   });
 }
 
-let reed = ref(null);
+async function onSubmit() {
+  const result = await loadInitialJobData();
+  initialJobs.value = result.data;
+  console.log(initialJobs);
+  return initialJobs;
+}
 
-onMounted(async () => {
-  const result = await loadData();
-  console.log(result);
-  reed.value = result.data;
-  console.log(reed);
-  return reed;
-});
+function onReset() {
+  keyword.value = null;
+  location.value = null;
+  accept.value = false;
+}
+
+async function loadSpecificJobData(jobId) {
+  return await api.get("/api/ReedJobInfo", {
+    params: {
+      jobId: jobId,
+    },
+  });
+}
+async function loadSpecificJobDataOnClick(jobId) {
+  const result = await loadSpecificJobData(jobId);
+  console.log(result.data);
+  return result.data;
+}
 </script>
 
-<!-- Need to display json so people can save the job Loop through list of x amount of
-jobs, and display job.data or whatever then have a button that saves them if
-you're interested i guess--it sends to backend. -->
-
-<!-- will need at some point to request another api call for the individual job -->
-
-<!-- make backend give single array of objects. -->
-
-<!-- for display--need to loop through and do another api call to get job specific data, like in pokemon -->
 <template>
   <div>
-    <div v-if="reed == []">Loading</div>
+    <div class="q-pa-md" @reset="onReset" style="max-width: 400px">
+      <q-form @submit="onSubmit" class="q-gutter-md">
+        <q-input
+          filled
+          v-model="keyword"
+          label="Job Keyword or Keywords"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        />
+        <q-input
+          filled
+          v-model="location"
+          label="Location"
+          lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+        />
 
-    <div v-else>
-      <ul>
-        <li v-for="r in reed" :key="r">
+        <div>
+          <q-btn label="Search" type="submit" color="primary" />
+          <q-btn
+            label="Reset"
+            type="reset"
+            color="primary"
+            flat
+            class="q-ml-sm"
+          />
+        </div>
+      </q-form>
+    </div>
+
+    <div class="q-pa-md row items-start q-gutter-md">
+      <q-card class="my-card" v-for="r in initialJobs" :key="r">
+        <q-card-section>
           <ul>
             <li>{{ r.employerName }}</li>
             <li>{{ r.date }}</li>
             <li>{{ r.jobDescription }}</li>
-            <!-- May have to request individual job for full description -->
             <li>{{ r.jobTitle }}</li>
             <li>{{ r.jobUrl }}</li>
             <li>{{ r.locationName }}</li>
-            <br />
           </ul>
-        </li>
-      </ul>
+
+          <q-btn
+            color="black"
+            label="View This Job"
+            @click="
+              viewJob = true;
+              loadSpecificJobDataOnClick(r.jobId);
+            "
+          />
+
+          <q-dialog v-model="viewJob" persistent>
+            <q-card>
+              <q-card-section class="row items-center">
+                <q-avatar
+                  icon="signal_wifi_off"
+                  color="primary"
+                  text-color="white"
+                />
+                <span class="q-ml-sm"
+                  >You are currently not connected to any network.</span
+                >
+              </q-card-section>
+
+              <q-card-actions>
+                <q-btn flat label="Cancel" color="primary" v-close-popup />
+                <q-btn
+                  flat
+                  label="Turn on Wifi"
+                  color="primary"
+                  v-close-popup
+                />
+              </q-card-actions>
+            </q-card>
+          </q-dialog>
+        </q-card-section>
+      </q-card>
     </div>
   </div>
 </template>

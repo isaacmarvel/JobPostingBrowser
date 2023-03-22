@@ -1,6 +1,4 @@
-﻿
-
-using JobPostingBrowser.Api.Models;
+﻿using JobPostingBrowser.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using RestEase;
@@ -27,7 +25,7 @@ namespace JobPostingBrowser.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<JobResponse>> GetJobInfo([FromQuery] JobInfoParameters parameters) //would use FromBody attribute for posts
         {
-            IReedJobInfoAPI api = RestClient.For<IReedJobInfoAPI>("https://www.reed.co.uk/");
+            IReedJobInfoAPI api = RestClient.For<IReedJobInfoAPI>("https://www.reed.co.uk/api/1.0/");
 
             var value = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{options.Value.ReedApiKey}:"));
 
@@ -37,7 +35,5 @@ namespace JobPostingBrowser.Api.Controllers
 
             return JobInfo;
         }
-
-
     }
 }

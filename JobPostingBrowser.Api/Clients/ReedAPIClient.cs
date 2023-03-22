@@ -25,7 +25,7 @@ namespace JobPostingBrowser.Api.Clients
             [Header("Authorization")]
             AuthenticationHeaderValue Authorization { get; set; }
 
-            [Get("api/1.0/search")]
+            [Get("search")]
             Task<JobApiResults> GetJobsAsync(string keywords, string locationName, int resultsToTake, int resultsToSkip);
         }
 
