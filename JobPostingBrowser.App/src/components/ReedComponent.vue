@@ -3,12 +3,13 @@ import { ref } from "vue";
 import { api } from "boot/axios";
 import { useQuasar } from "quasar";
 
-let viewJob = ref(false);
 let initialJobs = ref(null);
+let specificJob = ref(null);
 const $q = useQuasar();
 
 const keyword = ref(null);
 const location = ref(null);
+const toggle = ref(false);
 
 async function loadInitialJobData() {
   return await api.get("/api/Reed", {
@@ -41,10 +42,13 @@ async function loadSpecificJobData(jobId) {
     },
   });
 }
+
 async function loadSpecificJobDataOnClick(jobId) {
   const result = await loadSpecificJobData(jobId);
-  console.log(result.data);
-  return result.data;
+  specificJob.value = result.data;
+  console.log(specificJob);
+  toggle.value = true;
+  return specificJob;
 }
 </script>
 
@@ -57,74 +61,73 @@ async function loadSpecificJobDataOnClick(jobId) {
           v-model="keyword"
           label="Job Keyword or Keywords"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          :rules="[(val) => (val && val.length > 0) || 'Enter a keyword']"
         />
         <q-input
           filled
           v-model="location"
           label="Location"
           lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
+          :rules="[(val) => (val && val.length > 0) || 'Enter a location']"
         />
 
         <div>
           <q-btn label="Search" type="submit" color="primary" />
-          <q-btn
-            label="Reset"
-            type="reset"
-            color="primary"
-            flat
-            class="q-ml-sm"
-          />
         </div>
       </q-form>
+    </div>
+
+    <div class="q-pa-md row items-start q-gutter-md" v-if="toggle">
+      <q-card dark bordered class="bg-grey-9 my-card">
+        <q-card-section>
+          <div class="q-pa-md q-gutter-sm">
+            <q-btn color="white" text-color="black" label="Save this job" />
+          </div>
+
+          <div class="q-pa-md q-gutter-sm">
+            <q-btn
+              color="white"
+              text-color="black"
+              label="Cancel"
+              @click="toggle = false"
+            />
+          </div>
+        </q-card-section>
+
+        <q-separator dark inset />
+        <q-card-section>
+          <ul>
+            <li>Job Title: {{ specificJob.jobTitle }}</li>
+            <li>Job Date: {{ specificJob.date }}</li>
+            <li>Employer Name: {{ specificJob.employerName }}</li>
+            <li>Link to Job: {{ specificJob.jobUrl }}</li>
+            <li>Location: {{ specificJob.locationName }}</li>
+            <li>Max Salary: {{ specificJob.maximumSalary }}</li>
+            <li>Min Salary: {{ specificJob.minimumSalary }}</li>
+            <br />
+            <li>
+              Job description: <span v-html="specificJob.jobDescription"></span>
+            </li>
+          </ul>
+        </q-card-section>
+      </q-card>
     </div>
 
     <div class="q-pa-md row items-start q-gutter-md">
       <q-card class="my-card" v-for="r in initialJobs" :key="r">
         <q-card-section>
           <ul>
-            <li>{{ r.employerName }}</li>
-            <li>{{ r.date }}</li>
-            <li>{{ r.jobDescription }}</li>
-            <li>{{ r.jobTitle }}</li>
-            <li>{{ r.jobUrl }}</li>
-            <li>{{ r.locationName }}</li>
+            <li>Job Title: {{ r.jobTitle }}</li>
+            <li>Employer: {{ r.employerName }}</li>
+            <li>Partial Job Description: {{ r.jobDescription }}</li>
+            <li>Location: {{ r.locationName }}</li>
           </ul>
 
           <q-btn
             color="black"
             label="View This Job"
-            @click="
-              viewJob = true;
-              loadSpecificJobDataOnClick(r.jobId);
-            "
+            @click="loadSpecificJobDataOnClick(r.jobId)"
           />
-
-          <q-dialog v-model="viewJob" persistent>
-            <q-card>
-              <q-card-section class="row items-center">
-                <q-avatar
-                  icon="signal_wifi_off"
-                  color="primary"
-                  text-color="white"
-                />
-                <span class="q-ml-sm"
-                  >You are currently not connected to any network.</span
-                >
-              </q-card-section>
-
-              <q-card-actions>
-                <q-btn flat label="Cancel" color="primary" v-close-popup />
-                <q-btn
-                  flat
-                  label="Turn on Wifi"
-                  color="primary"
-                  v-close-popup
-                />
-              </q-card-actions>
-            </q-card>
-          </q-dialog>
         </q-card-section>
       </q-card>
     </div>
