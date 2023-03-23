@@ -16,7 +16,7 @@ namespace JobPostingBrowser.Api.Clients
             AuthenticationHeaderValue Authorization { get; set; }
 
             [Get("jobs/{jobId}")]
-            Task<JobResponse> GetJobInfoAsync([Path] int jobId);
+            Task<JobDetailsRoot> GetJobInfoAsync([Path] int jobId);
         }
     }
 }

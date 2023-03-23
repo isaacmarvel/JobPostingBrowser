@@ -23,7 +23,7 @@ namespace JobPostingBrowser.Api.Controllers
 
         //GET: api/1.0/search
         [HttpGet]
-        public async Task<ActionResult<JobResponse>> GetJobInfo([FromQuery] JobInfoParameters parameters) //would use FromBody attribute for posts
+        public async Task<ActionResult<JobDetailsRoot>> GetJobInfo([FromQuery] JobInfoParameters parameters) //would use FromBody attribute for posts
         {
             IReedJobInfoAPI api = RestClient.For<IReedJobInfoAPI>("https://www.reed.co.uk/api/1.0/");
 

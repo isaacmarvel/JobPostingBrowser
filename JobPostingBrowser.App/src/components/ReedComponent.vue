@@ -50,6 +50,11 @@ async function loadSpecificJobDataOnClick(jobId) {
   toggle.value = true;
   return specificJob;
 }
+
+async function postJob(job) {
+  // POST request using axios with async/await
+  const response = await axios.post("/savedJobs", job);
+}
 </script>
 
 <template>
@@ -81,7 +86,12 @@ async function loadSpecificJobDataOnClick(jobId) {
       <q-card dark bordered class="bg-grey-9 my-card">
         <q-card-section>
           <div class="q-pa-md q-gutter-sm">
-            <q-btn color="white" text-color="black" label="Save this job" />
+            <q-btn
+              color="white"
+              text-color="black"
+              label="Save this job"
+              @click="postJob(specificJob)"
+            />
           </div>
 
           <div class="q-pa-md q-gutter-sm">

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace JobPostingBrowser.Core
     internal class JobDetails
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-        public class Root
+        public class JobDetailsRoot
         {
             [JsonProperty("employerId")]
             public int EmployerId { get; set; }
@@ -18,7 +19,9 @@ namespace JobPostingBrowser.Core
             [JsonProperty("employerName")]
             public object EmployerName { get; set; }
 
+            
             [JsonProperty("jobId")]
+            [Key]
             public int JobId { get; set; }
 
             [JsonProperty("jobTitle")]

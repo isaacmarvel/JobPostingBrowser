@@ -1,13 +1,15 @@
 ﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace JobPostingBrowser.Core
 {
     public class Jobs
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-        public class JobResponse
+        public class Root
         {
             [JsonProperty("jobId")]
+            [Key]
             public int JobId { get; set; }
 
             [JsonProperty("employerId")]
@@ -15,12 +17,6 @@ namespace JobPostingBrowser.Core
 
             [JsonProperty("employerName")]
             public string EmployerName { get; set; }
-
-            [JsonProperty("employerProfileId")]
-            public object EmployerProfileId { get; set; }
-
-            [JsonProperty("employerProfileName")]
-            public object EmployerProfileName { get; set; }
 
             [JsonProperty("jobTitle")]
             public string JobTitle { get; set; }
@@ -56,7 +52,7 @@ namespace JobPostingBrowser.Core
         public class JobApiResults
         {
             [JsonProperty("results")]
-            public List<JobResponse> Results { get; set; }
+            public List<JobDetailsRoot> Results { get; set; }
 
             [JsonProperty("ambiguousLocations")]
             public List<object> AmbiguousLocations { get; set; }
