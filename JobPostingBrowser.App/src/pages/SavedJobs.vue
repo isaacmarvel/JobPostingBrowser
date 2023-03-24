@@ -1,12 +1,57 @@
+<script setup>
+import { ref } from "vue";
+import { api } from "boot/axios";
+import { onMounted } from "vue";
+import { useQuasar } from "quasar";
+
+let savedJobs = ref(null);
+
+async function loadSavedJobs() {
+  return await api.get("/api/JobDetails");
+}
+
+onMounted(async () => {
+  const result = await loadSavedJobs();
+  console.log(result);
+
+  savedJobs.value = result.data;
+});
+
+async function deleteJobFromDb(jobId) {
+  const response = await api.delete(`/api/JobDetails/${jobId}`);
+  console.log(response);
+}
+</script>
+
 <template>
   <q-page class="flex flex-center">
-    <h1>Saved Jobs</h1>
+    <div class="q-pa-md row items-start q-gutter-md">
+      <q-card class="my-card" v-for="job in savedJobs" :key="job">
+        <q-card-section>
+          <ul>
+            <li>Job Title: {{ job.jobTitle }}</li>
+            <li>Date Posted: {{ job.datePosted }}</li>
+            <li>Employer Name: {{ job.employerName }}</li>
+            <li>Link to Job: {{ job.jobUrl }}</li>
+            <li>Location: {{ job.locationName }}</li>
+            <li>Max Salary: {{ job.maximumSalary }}</li>
+            <li>Min Salary: {{ job.minimumSalary }}</li>
+            <br />
+            <li>
+              Job description:
+              <span v-html="job.jobDescription"></span>
+            </li>
+          </ul>
+
+          <q-btn
+            color="black"
+            label="Delete This Job"
+            @click="deleteJobFromDb(job.jobId)"
+          />
+          <q-separator dark inset />
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
   </q-page>
 </template>
-
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-})
-</script>
