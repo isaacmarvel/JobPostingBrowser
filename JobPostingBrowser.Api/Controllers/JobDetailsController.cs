@@ -10,7 +10,7 @@ using JobPostingBrowser.Core;
 
 namespace JobPostingBrowser.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class JobDetailsController : ControllerBase
     {

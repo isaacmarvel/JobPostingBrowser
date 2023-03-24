@@ -51,10 +51,12 @@ async function loadSpecificJobDataOnClick(jobId) {
   return specificJob;
 }
 
-// async function postJob(job) {
-//   // POST request using axios with async/await
-//   const response = await axios.post("/savedJobs", job);
-// }
+async function postJob() {
+  //do i need a parameter?
+  // POST request using axios with async/await
+  const response = await api.post("/api/JobDetails", specificJob.value);
+  console.log(response);
+}
 </script>
 
 <template>
