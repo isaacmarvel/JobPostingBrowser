@@ -19,6 +19,7 @@ onMounted(async () => {
 
 async function deleteJobFromDb(jobId) {
   const response = await api.delete(`/api/JobDetails/${jobId}`);
+  window.location.reload();
   console.log(response);
 }
 </script>
