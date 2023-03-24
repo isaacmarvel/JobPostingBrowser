@@ -6,7 +6,7 @@ namespace JobPostingBrowser.Core
     public class Jobs
     {
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-        public class Root
+        public class JobRoot
         {
             [JsonProperty("jobId")]
             [Key]
@@ -52,7 +52,7 @@ namespace JobPostingBrowser.Core
         public class JobApiResults
         {
             [JsonProperty("results")]
-            public List<JobDetailsRoot> Results { get; set; }
+            public List<JobRoot> Results { get; set; }
 
             [JsonProperty("ambiguousLocations")]
             public List<object> AmbiguousLocations { get; set; }

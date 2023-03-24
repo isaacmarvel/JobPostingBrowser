@@ -1,6 +1,7 @@
 ﻿using RestEase;
 using static JobPostingBrowser.Core.Jobs;
 using System.Net.Http.Headers;
+using JobPostingBrowser.Core;
 
 namespace JobPostingBrowser.Api.Clients
 {
@@ -16,7 +17,7 @@ namespace JobPostingBrowser.Api.Clients
             AuthenticationHeaderValue Authorization { get; set; }
 
             [Get("jobs/{jobId}")]
-            Task<JobDetailsRoot> GetJobInfoAsync([Path] int jobId);
+            Task<JobDetails> GetJobInfoAsync([Path] int jobId);
         }
     }
 }

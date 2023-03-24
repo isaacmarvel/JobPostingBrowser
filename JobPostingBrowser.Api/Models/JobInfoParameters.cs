@@ -1,4 +1,5 @@
 ﻿namespace JobPostingBrowser.Api.Models
+    
 {
     public class JobInfoParameters
     {

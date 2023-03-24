@@ -51,10 +51,10 @@ async function loadSpecificJobDataOnClick(jobId) {
   return specificJob;
 }
 
-async function postJob(job) {
-  // POST request using axios with async/await
-  const response = await axios.post("/savedJobs", job);
-}
+// async function postJob(job) {
+//   // POST request using axios with async/await
+//   const response = await axios.post("/savedJobs", job);
+// }
 </script>
 
 <template>
@@ -108,7 +108,7 @@ async function postJob(job) {
         <q-card-section>
           <ul>
             <li>Job Title: {{ specificJob.jobTitle }}</li>
-            <li>Job Date: {{ specificJob.date }}</li>
+            <li>Date Posted: {{ specificJob.datePosted }}</li>
             <li>Employer Name: {{ specificJob.employerName }}</li>
             <li>Link to Job: {{ specificJob.jobUrl }}</li>
             <li>Location: {{ specificJob.locationName }}</li>
