@@ -1,4 +1,4 @@
 # JobPostingBrowser
 How to run:
 
-Download Quasar from:
+Download Quasar from the following:
