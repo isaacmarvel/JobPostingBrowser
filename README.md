@@ -1,1 +1,2 @@
 # JobPostingBrowser
+How to run:
