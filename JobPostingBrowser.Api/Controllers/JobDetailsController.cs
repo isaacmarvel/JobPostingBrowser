@@ -51,38 +51,36 @@ namespace JobPostingBrowser.Api.Controllers
         }
 
         // PUT: api/JobDetails/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutJobDetails(int? id, JobDetails jobDetails)
-        {
-            if (id != jobDetails.JobId)
-            {
-                return BadRequest();
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutJobDetails(int? id, JobDetails jobDetails)
+        //{
+        //    if (id != jobDetails.JobId)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(jobDetails).State = EntityState.Modified;
+        //    _context.Entry(jobDetails).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JobDetailsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!JobDetailsExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
         // POST: api/JobDetails
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<JobDetails>> PostJobDetails(JobDetails jobDetails)
         {
