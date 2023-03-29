@@ -3,7 +3,6 @@
 {
     public class JobInfoParameters
     {
-
         public int JobId { get; set; }
     }
 }
