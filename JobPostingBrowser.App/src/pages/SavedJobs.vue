@@ -6,14 +6,13 @@ import { useQuasar } from "quasar";
 
 let savedJobs = ref(null);
 
-async function loadSavedJobs() {
+async function getSavedJobs() {
   return await api.get("/api/JobDetails");
 }
 
 onMounted(async () => {
-  const result = await loadSavedJobs();
+  const result = await getSavedJobs();
   console.log(result);
-
   savedJobs.value = result.data;
 });
 

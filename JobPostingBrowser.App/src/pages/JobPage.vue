@@ -11,31 +11,46 @@ const keyword = ref(null);
 const location = ref(null);
 const toggle = ref(false);
 
-async function loadInitialJobData() {
+async function callInitialReedData(
+  keywords,
+  locationName,
+  resultsToTake,
+  resultsToSkip
+) {
   return await api.get("/api/Reed", {
     params: {
-      keywords: "accountant",
-      locationName: "london",
+      keywords: keywords,
+      locationName: locationName,
       resultsToTake: 20,
       resultsToSkip: 0,
     },
   });
 }
 
-async function onSubmit() {
-  const result = await loadInitialJobData();
+async function getInitialJobs(
+  keywords,
+  locationName,
+  resultsToTake,
+  resultsToSkip
+) {
+  const result = await callInitialReedData(
+    keywords,
+    locationName,
+    resultsToTake,
+    resultsToSkip
+  );
   initialJobs.value = result.data;
   console.log(initialJobs);
   return initialJobs;
 }
 
-function onReset() {
+function resetRefs() {
   keyword.value = null;
   location.value = null;
   accept.value = false;
 }
 
-async function loadSpecificJobData(jobId) {
+async function callSpecificReedData(jobId) {
   return await api.get("/api/ReedJobInfo", {
     params: {
       jobId: jobId,
@@ -43,17 +58,15 @@ async function loadSpecificJobData(jobId) {
   });
 }
 
-async function loadSpecificJobDataOnClick(jobId) {
-  const result = await loadSpecificJobData(jobId);
+async function getSpecificJobs(jobId) {
+  const result = await callSpecificReedData(jobId);
   specificJob.value = result.data;
   console.log(specificJob);
   toggle.value = true;
   return specificJob;
 }
 
-async function postJob() {
-  //do i need a parameter?
-  // POST request using axios with async/await
+async function postSpecificJob() {
   const response = await api.post("/api/JobDetails", specificJob.value);
   console.log(response);
 }
@@ -62,29 +75,55 @@ async function postJob() {
 <template>
   <q-page class="flex flex-center">
     <div>
-      <div class="q-pa-md" @reset="onReset" style="max-width: 400px">
-        <q-form @submit="onSubmit" class="q-gutter-md">
+      <!-- The initial search form, submit button, and eventually the next and previous jobs buttons: -->
+      <div class="q-pa-md" @reset="resetRefs" style="max-width: 400px">
+        <q-form
+          @submit="getInitialJobs(keyword, locationName)"
+          class="q-gutter-md"
+        >
           <q-input
             filled
             v-model="keyword"
             label="Job Keyword or Keywords"
             lazy-rules
-            :rules="[(val) => (val && val.length > 0) || 'Enter a keyword']"
+            :rules="[
+              (val) => (val !== null && val !== '') || 'Enter a keyword',
+            ]"
           />
           <q-input
             filled
-            v-model="location"
+            v-model="locationName"
             label="Location"
             lazy-rules
-            :rules="[(val) => (val && val.length > 0) || 'Enter a location']"
+            :rules="[
+              (val) => (val !== null && val !== '') || 'Enter a location',
+            ]"
           />
 
           <div>
             <q-btn label="Search" type="submit" color="primary" />
+            <!-- <br />
+            <br />
+            <q-btn
+              color="black"
+              label="Previous Results"
+              v-if="initialJobs != null"
+            ></q-btn>
+            <br />
+            <br />
+
+            <q-btn
+              color="black"
+              label="Next Results"
+              v-if="initialJobs != null"
+            ></q-btn> -->
           </div>
+
+          <div class="q-pa-md q-gutter-sm"></div>
         </q-form>
       </div>
 
+      <!-- The list of jobs that appears after a search: -->
       <div class="q-pa-md row items-start q-gutter-md" v-if="toggle">
         <q-card dark bordered class="bg-grey-9 my-card">
           <q-card-section>
@@ -93,7 +132,7 @@ async function postJob() {
                 color="white"
                 text-color="black"
                 label="Save this job"
-                @click="postJob(specificJob)"
+                @click="postSpecificJob(specificJob)"
               />
             </div>
 
@@ -127,6 +166,7 @@ async function postJob() {
         </q-card>
       </div>
 
+      <!-- The specific job that appears when you click "view this job:" -->
       <div class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card" v-for="r in initialJobs" :key="r">
           <q-card-section>
@@ -140,7 +180,7 @@ async function postJob() {
             <q-btn
               color="black"
               label="View This Job"
-              @click="loadSpecificJobDataOnClick(r.jobId)"
+              @click="getSpecificJobs(r.jobId)"
             />
           </q-card-section>
         </q-card>
