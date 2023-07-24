@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header reveal elevated>
       <q-toolbar>
         <q-btn
           flat
@@ -54,7 +54,7 @@
       >
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm"> </q-avatar>
-          <div class="text-weight-bold">Isaac Marvel</div>
+          <div class="text-weight-bold">Created by Isaac Marvel, 2023</div>
         </div>
       </q-img>
     </q-drawer>
