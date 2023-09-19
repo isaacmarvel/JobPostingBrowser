@@ -3,30 +3,36 @@ import { ref } from "vue";
 import { api } from "boot/axios";
 import { onMounted } from "vue";
 import { useQuasar } from "quasar";
+import { useSavedJobStore } from "stores/jobId.js";
 
-let savedJobs = ref(null);
+let jobStore = useSavedJobStore();
 
-async function getSavedJobs() {
-  return await api.get("/api/JobDetails");
-}
-
+// async function getSavedJobs() {
+//   return await api.get("/api/JobDetails");
+// }
+let jobs;
 onMounted(async () => {
-  const result = await getSavedJobs();
-  console.log(result);
-  savedJobs.value = result.data;
+  jobStore.getSavedJobs();
 });
-
-async function deleteJobFromDb(jobId) {
-  const response = await api.delete(`/api/JobDetails/${jobId}`);
-  window.location.reload();
-  console.log(response);
+function consoleLog() {
+  console.log(jobStore.savedJobs);
 }
+// async function deleteJobFromDb(jobId) {
+//   const response = await api.delete(`/api/JobDetails/${jobId}`);
+//   window.location.reload();
+//   console.log(response);
+// }
 </script>
 
 <template>
   <q-page class="flex flex-center">
-    <div class="q-pa-md row items-start q-gutter-md">
-      <q-card class="my-card" v-for="job in savedJobs" :key="job">
+    <button @click="consoleLog">get jobs</button>
+    <div
+      v-if="jobStore.savedJobs != null"
+      class="q-pa-md row items-start q-gutter-md"
+    >
+      <li>test</li>
+      <q-card class="my-card" v-for="job in jobStore.savedJobs" :key="job">
         <q-card-section>
           <ul>
             <li>Job Title: {{ job.jobTitle }}</li>
