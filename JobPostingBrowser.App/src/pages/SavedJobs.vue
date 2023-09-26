@@ -1,7 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { api } from "boot/axios";
-import { onMounted } from "vue";
 import { useQuasar } from "quasar";
 import { useSavedJobStore } from "stores/jobId.js";
 
@@ -10,13 +9,15 @@ let jobStore = useSavedJobStore();
 // async function getSavedJobs() {
 //   return await api.get("/api/JobDetails");
 // }
-let jobs;
 onMounted(async () => {
-  jobStore.getSavedJobs();
+  console.log("test");
+  await jobStore.fetchSavedJobs();
+  await console.log(getSavedJobs);
 });
-function consoleLog() {
-  console.log(jobStore.savedJobs);
-}
+const getSavedJobs = computed(() => {
+  return jobStore.getSavedJobs;
+});
+
 // async function deleteJobFromDb(jobId) {
 //   const response = await api.delete(`/api/JobDetails/${jobId}`);
 //   window.location.reload();
@@ -26,13 +27,8 @@ function consoleLog() {
 
 <template>
   <q-page class="flex flex-center">
-    <button @click="consoleLog">get jobs</button>
-    <div
-      v-if="jobStore.savedJobs != null"
-      class="q-pa-md row items-start q-gutter-md"
-    >
-      <li>test</li>
-      <q-card class="my-card" v-for="job in jobStore.savedJobs" :key="job">
+    <div class="q-pa-md row items-start q-gutter-md">
+      <q-card class="my-card" v-for="job in getSavedJobs" :key="job">
         <q-card-section>
           <ul>
             <li>Job Title: {{ job.jobTitle }}</li>
@@ -52,7 +48,7 @@ function consoleLog() {
           <q-btn
             color="black"
             label="Delete This Job"
-            @click="deleteJobFromDb(job.jobId)"
+            @click="jobStore.deleteSavedJob(job.jobId)"
           />
           <q-separator dark inset />
           <br />

@@ -5,13 +5,31 @@ export const useSavedJobStore = defineStore("savedJobs", {
   state: () => ({
     savedJobs: null,
   }),
+  getters: {
+    getSavedJobs(state) {
+      console.log(state.savedJobs);
+      return JSON.parse(JSON.stringify(state.savedJobs));
+    },
+  },
   actions: {
-    async getSavedJobs() {
+    async fetchSavedJobs() {
       try {
-        return (this.savedJobs = await api.get("/api/JobDetails"));
+        const data = await api.get("/api/JobDetails");
+        this.savedJobs = data.data;
+        console.log(this.savedJobs);
+        //maybe can json stringify this stuff here?
       } catch (error) {
         console.log(error);
-        return error;
+        alert(error);
+      }
+    },
+    async deleteSavedJob(jobId) {
+      try {
+        const response = await api.delete(`/api/JobDetails/${jobId}`);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+        alert(error);
       }
     },
     // create(title, description) {
