@@ -123,8 +123,7 @@ async function postSpecificJob() {
         </q-form>
       </div>
 
-      <!-- The list of jobs that appears after a search: -->
-      <!-- Should this appear at top of page? -->
+      <!-- The specific job that appears when you click "view this job:" -->
       <div class="q-pa-md row items-start q-gutter-md" v-if="toggle">
         <q-card dark bordered class="bg-grey-9 my-card">
           <q-card-section>
@@ -167,7 +166,7 @@ async function postSpecificJob() {
         </q-card>
       </div>
 
-      <!-- The specific job that appears when you click "view this job:" -->
+      <!-- The list of jobs that appears after a search: -->
       <div class="q-pa-md row items-start q-gutter-md">
         <q-card class="my-card" v-for="r in initialJobs" :key="r">
           <q-card-section>
